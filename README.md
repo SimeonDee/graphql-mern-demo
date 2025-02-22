@@ -3,5 +3,6 @@
  
  ## Technologies 
  - MERN stack
+ - GraphQL
  - GraphiQL
  - express-graphql
