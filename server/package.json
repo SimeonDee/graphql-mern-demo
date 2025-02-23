@@ -1,5 +1,5 @@
 {
-  "name": "graphql-mern-demo",
+  "name": "graphql-mern-demo-server",
   "version": "1.0.0",
   "description": "Demonstrating the use of GraphQL with Node.js, Express, MongoDB and React.",
   "main": "index.mjs",

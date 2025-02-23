@@ -1,0 +1,20 @@
+{
+  "name": "graphql-mern-demo-client",
+  "version": "1.0.0",
+  "description": "Demonstrating the use of GraphQL with Node.js, Express, MongoDB and React.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimeonDee/graphql-mern-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SimeonDee/graphql-mern-demo/issues"
+  },
+  "homepage": "https://github.com/SimeonDee/graphql-mern-demo#readme"
+}
