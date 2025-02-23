@@ -4,5 +4,6 @@
  ## Technologies 
  - MERN stack
  - GraphQL
- - GraphiQL
+ - GraphiQL (ruru.js)
  - express-graphql
+ - lodash
