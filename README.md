@@ -6,4 +6,8 @@
  - GraphQL
  - GraphiQL (ruru.js)
  - express-graphql
- - lodash
+ - Packages
+   - lodash
+   - DEV
+     - nodemon
+     - dotenv 
