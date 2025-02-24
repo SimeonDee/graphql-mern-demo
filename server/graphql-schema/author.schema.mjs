@@ -6,7 +6,7 @@ import {
   GraphQLInt,
 } from "graphql";
 import _ from "lodash";
-import { books } from "./sample_data.mjs";
+import Book from "../models/book.mjs";
 import BookType from "./book.schema.mjs";
 
 const AuthorType = new GraphQLObjectType({
@@ -17,7 +17,8 @@ const AuthorType = new GraphQLObjectType({
     age: { type: GraphQLInt },
     books: {
       type: new GraphQLList(BookType),
-      resolve(parent, args) {
+      async resolve(parent, args) {
+        const books = await Book.find({});
         return _.filter(books, { authorId: parent.id });
       },
     },
