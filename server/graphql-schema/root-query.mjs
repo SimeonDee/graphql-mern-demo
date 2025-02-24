@@ -1,15 +1,9 @@
-import {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLSchema,
-  GraphQLID,
-  GraphQLList,
-  GraphQLFloat,
-} from "graphql";
+import BookType from "./book.schema.mjs";
+import { GraphQLID } from "graphql";
+import BookType from "./book.schema.mjs";
+import AuthorType from "./author.schema.mjs";
 import _ from "lodash";
 import { books, authors } from "./sample_data.mjs";
-import AuthorType from "./author.schema.mjs";
-import BookType from "./book.schema.mjs";
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -48,17 +42,4 @@ const RootQuery = new GraphQLObjectType({
   },
 });
 
-// MUTATIONS
-
-// Book Mutations
-// const BookMutations = new GraphQLObjectType({
-//   name: "BookMutation",
-//   fields: {
-//     type: BookType,
-//     resol
-//   }
-// })
-
-export default new GraphQLSchema({
-  query: RootQuery,
-});
+export default RootQuery;
