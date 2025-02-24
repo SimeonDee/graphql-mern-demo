@@ -14,21 +14,35 @@ const books = [
     name: "Book 1",
     genre: "arts",
     price: 5000,
-    author: { id: "1", name: "Author 1" },
+    authorId: "1",
   },
   {
     id: "2",
     name: "Book 2",
     genre: "fantasy",
     price: 2400,
-    author: { id: "1", name: "Author 1" },
+    authorId: "1",
   },
   {
     id: "3",
     name: "Book 3",
     genre: "comics",
+    price: 4500,
+    authorId: "3",
+  },
+  {
+    id: "4",
+    name: "Book 4",
+    genre: "arts",
     price: 8500,
-    author: { id: "3", name: "Author 3" },
+    authorId: "1",
+  },
+  {
+    id: "5",
+    name: "Book 5",
+    genre: "comics",
+    price: 1200,
+    authorId: "3",
   },
 ];
 
@@ -45,7 +59,21 @@ const BookType = new GraphQLObjectType({
     name: { type: GraphQLString },
     genre: { type: GraphQLString },
     price: { type: GraphQLFloat },
-    author: { type: AuthorType },
+    author: {
+      type: AuthorType,
+      resolve(parent, args) {
+        return _.find(authors, { id: parent.authorId });
+      },
+    },
+    similarBooks: {
+      type: new GraphQLList(BookType),
+      resolve(parent, args) {
+        return _.filter(
+          books,
+          (b) => b.genre === parent.genre && b.id !== parent.id // other books with same genre
+        );
+      },
+    },
   }),
 });
 
@@ -54,7 +82,12 @@ const AuthorType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
-    books: { type: new GraphQLList(BookType) },
+    books: {
+      type: new GraphQLList(BookType),
+      resolve(parent, args) {
+        return _.filter(books, { authorId: parent.id });
+      },
+    },
   }),
 });
 
@@ -69,19 +102,19 @@ const RootQuery = new GraphQLObjectType({
       },
     },
 
-    books: {
-      type: new GraphQLList(BookType),
-      args: {},
-      resolve(parent, args) {
-        return books;
-      },
-    },
-
     author: {
       type: AuthorType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
         return _.find(authors, { id: args.id });
+      },
+    },
+
+    books: {
+      type: new GraphQLList(BookType),
+      args: {},
+      resolve(parent, args) {
+        return books;
       },
     },
 
