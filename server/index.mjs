@@ -6,7 +6,7 @@ import { createHandler } from "graphql-http/lib/use/express";
 import mongoose from "mongoose";
 
 // Connect to database
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(process.env.MONGO_URI2);
 mongoose.connection.once("open", () => {
   console.log("Connected to mongoDB");
 });
