@@ -2,8 +2,8 @@ import { GraphQLID, GraphQLList, GraphQLObjectType } from "graphql";
 import BookType from "./book.schema.mjs";
 import AuthorType from "./author.schema.mjs";
 import _ from "lodash";
-import Book from "../models/book.mjs";
-import Author from "../models/author.mjs";
+import { Book } from "../models/book.mjs";
+import { Author } from "../models/author.mjs";
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -12,8 +12,7 @@ const RootQuery = new GraphQLObjectType({
       type: BookType,
       args: { id: { type: GraphQLID } },
       async resolve(parent, args) {
-        const books = await Book.find({});
-        return _.find(books, { id: args.id });
+        return await Book.findById(args.id);
       },
     },
 
@@ -21,8 +20,7 @@ const RootQuery = new GraphQLObjectType({
       type: AuthorType,
       args: { id: { type: GraphQLID } },
       async resolve(parent, args) {
-        const authors = await Author.find({});
-        return _.find(authors, { id: args.id });
+        return await Author.findById(args.id);
       },
     },
 

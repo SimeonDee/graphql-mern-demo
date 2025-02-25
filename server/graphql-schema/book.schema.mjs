@@ -6,8 +6,8 @@ import {
   GraphQLFloat,
 } from "graphql";
 import _ from "lodash";
-import Book from "../models/book.mjs";
-import Author from "../models/author.mjs";
+import { Book } from "../models/book.mjs";
+import { Author } from "../models/author.mjs";
 import AuthorType from "./author.schema.mjs";
 
 const BookType = new GraphQLObjectType({

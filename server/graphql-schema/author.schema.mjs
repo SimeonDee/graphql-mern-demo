@@ -6,7 +6,7 @@ import {
   GraphQLInt,
 } from "graphql";
 import _ from "lodash";
-import Book from "../models/book.mjs";
+import { Book } from "../models/book.mjs";
 import BookType from "./book.schema.mjs";
 
 const AuthorType = new GraphQLObjectType({

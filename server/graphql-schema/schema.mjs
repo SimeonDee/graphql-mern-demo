@@ -1,17 +1,8 @@
 import { GraphQLSchema } from "graphql";
 import RootQuery from "./root-query.mjs";
-
-// MUTATIONS
-
-// Book Mutations
-// const BookMutations = new GraphQLObjectType({
-//   name: "BookMutation",
-//   fields: {
-//     type: BookType,
-//     resol
-//   }
-// })
+import RootMutation from "./mutations/index.mjs";
 
 export default new GraphQLSchema({
   query: RootQuery,
+  mutation: RootMutation,
 });
